@@ -1,16 +1,25 @@
 package com.sreekanth.engage.controllers;
 
-import com.sreekanth.engage.config.JwtTokenUtil;
+import com.sreekanth.engage.utils.EngageUserUtil;
+import com.sreekanth.engage.utils.JwtTokenUtil;
+import com.sreekanth.engage.models.EngageUser;
+import com.sreekanth.engage.repositories.EngageUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class HelloController {
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private EngageUserRepository engageUserRepository;
+
+    @Autowired
+    private EngageUserUtil engageUserUtil;
 
     @RequestMapping("/hello")
     public String sayHello(@RequestHeader("Authorization") String auth) {
@@ -19,5 +28,11 @@ public class HelloController {
         System.out.println(username);
 
         return "Hello Engage";
+    }
+
+    @GetMapping("/users")
+    public List<EngageUser> getUsers() {
+        List<EngageUser> users = engageUserRepository.findAll();
+        return users;
     }
 }

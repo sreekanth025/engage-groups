@@ -1,6 +1,6 @@
 package com.sreekanth.engage.controllers;
 
-import com.sreekanth.engage.config.JwtTokenUtil;
+import com.sreekanth.engage.utils.JwtTokenUtil;
 import com.sreekanth.engage.models.JwtRequest;
 import com.sreekanth.engage.models.JwtResponse;
 import com.sreekanth.engage.services.JwtUserDetailsService;

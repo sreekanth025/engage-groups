@@ -1,4 +1,4 @@
-package com.sreekanth.engage.config;
+package com.sreekanth.engage.utils;
 
 import java.io.Serializable;
 import java.util.Date;
