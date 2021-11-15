@@ -18,7 +18,7 @@ public class UserRegistrationController {
     private UserRegistrationService userRegistrationService;
 
     @PostMapping("/register")
-    public ResponseEntity createTodo(@RequestBody EngageUser engageUser) {
+    public ResponseEntity registerUser(@RequestBody EngageUser engageUser) {
         return userRegistrationService.registerUser(engageUser);
     }
 }

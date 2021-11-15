@@ -1,14 +1,12 @@
 package com.sreekanth.engage.controllers;
 
+import com.sreekanth.engage.models.GroupInfo;
 import com.sreekanth.engage.services.GroupsService;
 import com.sreekanth.engage.services.MailingService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -40,5 +38,14 @@ public class GroupsController {
         System.out.println(groupId);
 
         return "Still under development";
+    }
+
+    @GetMapping("/getUserGroups")
+    public List<GroupInfo> getUserGroups(@RequestHeader("Authorization") String auth) {
+
+        String token = auth.substring(7);
+        String userEmail = jwtTokenUtil.getUsernameFromToken(token);
+
+        return groupsService.getUserGroups(userEmail);
     }
 }

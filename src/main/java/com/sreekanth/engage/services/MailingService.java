@@ -8,6 +8,7 @@ import java.util.List;
 public class MailingService {
 
     public String sendGroupInvitationMail(String adminMail, String groupId, List<String> emailList) {
+//        TODO
         return "Still under development";
     }
 }

@@ -3,22 +3,18 @@ package com.sreekanth.engage.services;
 import com.sreekanth.engage.models.EngageUser;
 import com.sreekanth.engage.repositories.EngageUserRepository;
 import com.sreekanth.engage.utils.EngageUserUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class UserRegistrationService {
 
-    @Autowired
     private EngageUserRepository engageUserRepository;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private EngageUserUtil engageUserUtil;
 
     public ResponseEntity registerUser(EngageUser engageUser) {
