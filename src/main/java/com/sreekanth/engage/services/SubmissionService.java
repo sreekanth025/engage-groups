@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -29,5 +30,13 @@ public class SubmissionService {
                 )
         );
         return submission.getId();
+    }
+
+    public Submission submitFeedback(String submissionId, String feedback) {
+        Optional<Submission> OptionalSubmission = submissionRepository.findById(submissionId);
+        Submission submission = OptionalSubmission.get();
+        submission.setFeedback(feedback);
+        submissionRepository.save(submission);
+        return submission;
     }
 }

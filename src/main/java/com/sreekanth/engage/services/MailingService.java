@@ -1,5 +1,6 @@
 package com.sreekanth.engage.services;
 
+import com.sreekanth.engage.models.Submission;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,11 @@ public class MailingService {
 
     public String sendGroupInvitationMail(String adminMail, String groupId, List<String> emailList) {
 //        TODO
-        return "Still under development";
+        return "Under development";
+    }
+
+    public String sendFeedbackMail(String userEmail, Submission submission) {
+//        TODO
+        return "Under development";
     }
 }
