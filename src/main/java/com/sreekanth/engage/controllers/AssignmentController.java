@@ -49,7 +49,7 @@ public class AssignmentController {
         return assignmentService.getAssignmentById(assignmentId);
     }
 
-    @GetMapping("/{assignmentId}")
+    @GetMapping("/adminOpenAssignment/{assignmentId}")
     public AdminAssignmentView adminOpenAssignment(@PathVariable String assignmentId) {
         List<MetaSubmission> submissions = assignmentService.getAssignmentSubmissions(assignmentId);
         Assignment assignment = assignmentService.getAssignmentById(assignmentId);
