@@ -1,6 +1,8 @@
 package com.sreekanth.engage.controllers;
 
+import com.sreekanth.engage.models.AdminAssignmentView;
 import com.sreekanth.engage.models.Assignment;
+import com.sreekanth.engage.models.MetaSubmission;
 import com.sreekanth.engage.services.AssignmentService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
@@ -45,5 +47,12 @@ public class AssignmentController {
     @GetMapping("/studentOpenAssignment/{assignmentId}")
     public Assignment studentOpenAssignment(@PathVariable String assignmentId) {
         return assignmentService.getAssignmentById(assignmentId);
+    }
+
+    @GetMapping("//{assignmentId}")
+    public AdminAssignmentView adminOpenAssignment(@PathVariable String assignmentId) {
+        List<MetaSubmission> submissions = assignmentService.getAssignmentSubmissions(assignmentId);
+        Assignment assignment = assignmentService.getAssignmentById(assignmentId);
+        return new AdminAssignmentView(assignment, submissions);
     }
 }
