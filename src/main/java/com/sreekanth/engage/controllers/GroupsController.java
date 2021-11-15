@@ -1,11 +1,12 @@
 package com.sreekanth.engage.controllers;
 
 import com.sreekanth.engage.models.GroupInfo;
+import com.sreekanth.engage.models.GroupMember;
+import com.sreekanth.engage.models.Member;
 import com.sreekanth.engage.services.GroupsService;
 import com.sreekanth.engage.services.MailingService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class GroupsController {
         System.out.println(emailList);
         System.out.println(groupId);
 
-        return "Still under development";
+        return "Group created, invitation mails under development";
     }
 
     @GetMapping("/getUserGroups")
@@ -47,5 +48,10 @@ public class GroupsController {
         String userEmail = jwtTokenUtil.getUsernameFromToken(token);
 
         return groupsService.getUserGroups(userEmail);
+    }
+
+    @GetMapping("/getGroupMembers/{groupId}")
+    public List<Member> getGroupMembers(@PathVariable String groupId) {
+        return groupsService.getGroupMembers(groupId);
     }
 }

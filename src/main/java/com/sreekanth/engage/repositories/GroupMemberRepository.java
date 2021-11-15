@@ -11,6 +11,7 @@ import java.util.List;
 public interface GroupMemberRepository extends MongoRepository<GroupMember, String> {
 
     List<GroupMember> findByUserEmail(String userEmail);
+    List<GroupMember> findByGroupId(String groupId);
 
     @Query("{groupId : ?0, role : ?1}")
     List<GroupMember> getGroupMemberByGroupIdAndRole(String groupId, String role);

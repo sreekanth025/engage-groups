@@ -3,18 +3,17 @@ package com.sreekanth.engage.services;
 import com.sreekanth.engage.models.EngageGroup;
 import com.sreekanth.engage.models.GroupInfo;
 import com.sreekanth.engage.models.GroupMember;
+import com.sreekanth.engage.models.Member;
 import com.sreekanth.engage.repositories.EngageGroupRepository;
 import com.sreekanth.engage.repositories.GroupMemberRepository;
 import com.sreekanth.engage.utils.EngageGroupUtil;
 import com.sreekanth.engage.utils.EngageUserUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -51,6 +50,18 @@ public class GroupsService {
                     userEmail
             );
             result.add(groupInfo);
+        }
+
+        return result;
+    }
+
+    public List<Member> getGroupMembers(String groupId) {
+        List<GroupMember> searchResult = groupMemberRepository.findByGroupId(groupId);
+        List<Member> result = new ArrayList<>();
+
+        for(GroupMember groupMember: searchResult) {
+            String name = engageUserUtil.getNameByUserEmail(groupMember.getUserEmail());
+            result.add(new Member(groupMember, name));
         }
 
         return result;
