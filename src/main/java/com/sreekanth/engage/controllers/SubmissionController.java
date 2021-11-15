@@ -5,10 +5,7 @@ import com.sreekanth.engage.services.MailingService;
 import com.sreekanth.engage.services.SubmissionService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -43,5 +40,10 @@ public class SubmissionController {
         Submission submission = submissionService.submitFeedback(submissionId, feedback);
         mailingService.sendFeedbackMail(userEmail, submission);
         return submission.getId();
+    }
+
+    @GetMapping("/getSubmission/{submissionId}")
+    public Submission getSubmission(@PathVariable String submissionId) {
+        return submissionService.getSubmission(submissionId);
     }
 }

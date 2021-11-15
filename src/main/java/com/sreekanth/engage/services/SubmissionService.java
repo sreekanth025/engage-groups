@@ -39,4 +39,9 @@ public class SubmissionService {
         submissionRepository.save(submission);
         return submission;
     }
+
+    public Submission getSubmission(String submissionId) {
+        Optional<Submission> searchResult = submissionRepository.findById(submissionId);
+        return searchResult.get();
+    }
 }
