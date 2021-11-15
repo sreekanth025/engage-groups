@@ -1,12 +1,10 @@
 package com.sreekanth.engage.controllers;
 
+import com.sreekanth.engage.models.Assignment;
 import com.sreekanth.engage.services.AssignmentService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -42,6 +40,10 @@ public class AssignmentController {
                 fileLinks,
                 points
         );
+    }
 
+    @GetMapping("/studentOpenAssignment/{assignmentId}")
+    public Assignment studentOpenAssignment(@PathVariable String assignmentId) {
+        return assignmentService.getAssignmentById(assignmentId);
     }
 }

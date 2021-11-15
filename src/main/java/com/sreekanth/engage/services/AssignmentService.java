@@ -29,4 +29,8 @@ public class AssignmentService {
         );
         return assignment.getId();
     }
+
+    public Assignment getAssignmentById(String assignmentId) {
+        return assignmentRepository.findById(assignmentId).get();
+    }
 }
