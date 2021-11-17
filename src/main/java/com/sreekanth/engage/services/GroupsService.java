@@ -9,11 +9,14 @@ import com.sreekanth.engage.repositories.GroupMemberRepository;
 import com.sreekanth.engage.utils.EngageGroupUtil;
 import com.sreekanth.engage.utils.EngageUserUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -73,5 +76,20 @@ public class GroupsService {
         groupMember = groupMemberRepository.save(groupMember);
         mailingService.groupJoiningNotification();
         return groupMember.getId();
+    }
+
+    public ResponseEntity acceptMembership(String groupId, String adminEmail, String membershipId) {
+
+        String originalAdmin = engageGroupUtil.getAdminMail(groupId);
+        if(originalAdmin.equals(adminEmail)) {
+            Optional<GroupMember> groupMemberOptional = groupMemberRepository.findById(membershipId);
+            GroupMember groupMember = groupMemberOptional.get();
+            groupMember.setRole("member");
+            groupMemberRepository.save(groupMember);
+            return new ResponseEntity("Membership allowed", HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity("Membership can only be accepted by admin", HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 }

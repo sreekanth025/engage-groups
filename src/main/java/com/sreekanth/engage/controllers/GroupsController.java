@@ -7,6 +7,7 @@ import com.sreekanth.engage.services.GroupsService;
 import com.sreekanth.engage.services.MailingService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,5 +62,15 @@ public class GroupsController {
 
         String userEmail = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         return groupsService.joinGroup(userEmail, groupId);
+    }
+
+    @PostMapping("/acceptMembership")
+    public ResponseEntity acceptMembership(@RequestBody Map<String, Object> payload,
+                                           @RequestHeader("Authorization") String auth) {
+
+        String adminEmail = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        String groupId = (String) payload.get("groupId");
+        String membershipId = (String) payload.get(("membershipId"));
+        return groupsService.acceptMembership(groupId, adminEmail, membershipId);
     }
 }
