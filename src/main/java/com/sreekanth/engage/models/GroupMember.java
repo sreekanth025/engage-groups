@@ -18,9 +18,9 @@ public class GroupMember {
     private String userEmail;
     private String role;
 
-    public GroupMember(String groupId, String adminEmail, String role) {
+    public GroupMember(String groupId, String userEmail, String role) {
         this.groupId = groupId;
-        this.userEmail = adminEmail;
+        this.userEmail = userEmail;
         this.role = role;
     }
 }

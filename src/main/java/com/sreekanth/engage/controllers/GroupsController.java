@@ -54,4 +54,12 @@ public class GroupsController {
     public List<Member> getGroupMembers(@PathVariable String groupId) {
         return groupsService.getGroupMembers(groupId);
     }
+
+    @GetMapping("/joinGroup/{groupId}")
+    public String joinGroup(@PathVariable String groupId,
+                            @RequestHeader("Authorization") String auth) {
+
+        String userEmail = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        return groupsService.joinGroup(userEmail, groupId);
+    }
 }

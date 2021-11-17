@@ -23,6 +23,7 @@ public class GroupsService {
     private GroupMemberRepository groupMemberRepository;
     private EngageGroupUtil engageGroupUtil;
     private EngageUserUtil engageUserUtil;
+    private MailingService mailingService;
 
     public String createGroup(String groupName, String adminEmail) {
         EngageGroup engageGroup = new EngageGroup(groupName, new Date());
@@ -65,5 +66,12 @@ public class GroupsService {
         }
 
         return result;
+    }
+
+    public String joinGroup(String userEmail, String groupId) {
+        GroupMember groupMember = new GroupMember(groupId, userEmail, "waiting");
+        groupMember = groupMemberRepository.save(groupMember);
+        mailingService.groupJoiningNotification();
+        return groupMember.getId();
     }
 }

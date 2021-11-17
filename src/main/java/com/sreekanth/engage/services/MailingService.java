@@ -17,4 +17,9 @@ public class MailingService {
 //        TODO
         return "Under development";
     }
+
+    public String groupJoiningNotification() {
+//        TODO
+        return "under development";
+    }
 }
