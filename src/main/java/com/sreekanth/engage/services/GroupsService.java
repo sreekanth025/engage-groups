@@ -1,9 +1,7 @@
 package com.sreekanth.engage.services;
 
-import com.sreekanth.engage.models.EngageGroup;
-import com.sreekanth.engage.models.GroupInfo;
-import com.sreekanth.engage.models.GroupMember;
-import com.sreekanth.engage.models.Member;
+import com.sreekanth.engage.models.*;
+import com.sreekanth.engage.repositories.AssignmentRepository;
 import com.sreekanth.engage.repositories.EngageGroupRepository;
 import com.sreekanth.engage.repositories.GroupMemberRepository;
 import com.sreekanth.engage.utils.EngageGroupUtil;
@@ -24,6 +22,7 @@ public class GroupsService {
 
     private EngageGroupRepository engageGroupRepository;
     private GroupMemberRepository groupMemberRepository;
+    private AssignmentRepository assignmentRepository;
     private EngageGroupUtil engageGroupUtil;
     private EngageUserUtil engageUserUtil;
     private MailingService mailingService;
@@ -90,6 +89,20 @@ public class GroupsService {
         }
         else {
             return new ResponseEntity("Membership can only be accepted by admin", HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    public ResponseEntity getGroupAssignments(String groupId, String userEmail) {
+
+        List<GroupMember> groupMembers = groupMemberRepository
+                .getGroupMemberByGroupIdAndUserEmail(groupId, userEmail);
+
+        if(groupMembers.size() > 0) {
+            List<Assignment> result = assignmentRepository.getAssignmentByGroupId(groupId);
+            return new ResponseEntity(result, HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity("Not a member of the group", HttpStatus.UNAUTHORIZED);
         }
     }
 }

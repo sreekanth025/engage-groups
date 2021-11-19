@@ -15,4 +15,7 @@ public interface GroupMemberRepository extends MongoRepository<GroupMember, Stri
 
     @Query("{groupId : ?0, role : ?1}")
     List<GroupMember> getGroupMemberByGroupIdAndRole(String groupId, String role);
+
+    @Query("{groupId : ?0, userEmail : ?1}")
+    List<GroupMember> getGroupMemberByGroupIdAndUserEmail(String groupId, String userEmail);
 }

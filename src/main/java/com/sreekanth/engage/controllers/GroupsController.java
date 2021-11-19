@@ -1,5 +1,6 @@
 package com.sreekanth.engage.controllers;
 
+import com.sreekanth.engage.models.Assignment;
 import com.sreekanth.engage.models.GroupInfo;
 import com.sreekanth.engage.models.GroupMember;
 import com.sreekanth.engage.models.Member;
@@ -72,5 +73,12 @@ public class GroupsController {
         String groupId = (String) payload.get("groupId");
         String membershipId = (String) payload.get(("membershipId"));
         return groupsService.acceptMembership(groupId, adminEmail, membershipId);
+    }
+
+    @GetMapping("/getGroupAssignments/{groupId}")
+    public ResponseEntity getGroupAssignments(@PathVariable String groupId,
+                                                @RequestHeader("Authorization") String auth) {
+        String userEmail = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        return groupsService.getGroupAssignments(groupId, userEmail);
     }
 }
