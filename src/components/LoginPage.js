@@ -1,9 +1,14 @@
+import { appConstants } from "../helpers/appConstants";
 import LoginForm from "./forms/LoginForm";
 
-const LoginPage = () => {
+const LoginPage = ({setIsAuth}) => {
+
+    setIsAuth(false);
+    localStorage.removeItem(appConstants.AUTH_TOKEN)
+
     return (
         <div> 
-            <LoginForm />
+            <LoginForm setIsAuth={setIsAuth}/>
         </div>
     );
 }

@@ -21,6 +21,11 @@ const pages = [
         component: Home,
     },
     {
+        displayName: "Home",
+        pageLink: "/home",
+        component: Home,
+    },
+    {
         displayName: "Sign up",
         pageLink: "/signup",
         component: Signup,
