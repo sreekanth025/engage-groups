@@ -1,12 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Card, CardTitle } from 'reactstrap';
 import pages from "./helpers/pages";
 
 
 const App = () => {
     return (
         <div>
-            <h1>Hello Engage</h1>
+            <Card body className="text-center">
+                <CardTitle tag="h3">Engage Groups</CardTitle>
+            </Card>
             <Router>
                 <Routes>
                     {pages.map((item, indx) => (
