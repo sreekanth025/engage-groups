@@ -10,7 +10,6 @@ function LoginForm({setIsAuth}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [token, setToken] = useState('');
-    const [redirect, setRedirect] = useState(false);
 
     var staus_number = "401";
 
@@ -82,7 +81,7 @@ function LoginForm({setIsAuth}) {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </FormGroup>
-                <Button>Submit</Button>
+                <Button>Login</Button>
             </Form>
         </div>
     )
