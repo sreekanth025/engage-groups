@@ -4,4 +4,5 @@ export const apiUrls = {
     login: () => `${API_ROOT}/authenticate`,
     signup: () => `${API_ROOT}/register`,
     createGroup: () => `${API_ROOT}/createGroup`,
+    getUserGroups: () => `${API_ROOT}/getUserGroups`,
 }
