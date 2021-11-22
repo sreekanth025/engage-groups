@@ -34,7 +34,7 @@ function SignUpForm({setIsAuth}) {
                 .then((res) => {
                     token = res.data.token;
                     console.log(token);
-                    localStorage.setItem(appConstants.AUTH_TOKEN, token);
+                    localStorage.setItem(appConstants.AUTH_TOKEN, "Bearer "+token);
                     setIsAuth(true);
                 })
                 .catch((err) => {

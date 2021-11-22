@@ -9,9 +9,10 @@ function LoginForm({setIsAuth}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [token, setToken] = useState('');
+    // const [token, setToken] = useState('');
 
     var staus_number = "401";
+    var token = '';
 
     const getToken = async(body) => {
         await axios
@@ -21,7 +22,7 @@ function LoginForm({setIsAuth}) {
                 console.log(res);
 
                 console.log(res.data.token)
-                setToken(res.data.token);
+                token = res.data.token;
 
                 console.log('Setting staus to 200');
                 staus_number = "200";
