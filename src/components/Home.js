@@ -38,8 +38,8 @@ function Home() {
             <Link to="/createGroup"><Button>Create New Group</Button></Link>
 
             {loading ? <h1>Loader </h1> : 
-            groups.map((item, index) => (
-                <GroupCard group={item}/>
+            groups.map((item, indx) => (
+                <GroupCard group={item} key={indx}/>
             ))}
         </div>
     )

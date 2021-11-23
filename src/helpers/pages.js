@@ -37,7 +37,7 @@ const pages = [
     },
     {
         displayName: "",
-        pageLink: "/group",
+        pageLink: "/group/:groupId",
         component: Group,
     },
     {

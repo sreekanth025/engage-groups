@@ -5,4 +5,5 @@ export const apiUrls = {
     signup: () => `${API_ROOT}/register`,
     createGroup: () => `${API_ROOT}/createGroup`,
     getUserGroups: () => `${API_ROOT}/getUserGroups`,
+    getGroupAssignmnets: (groupId) => `${API_ROOT}/getGroupAssignments/${groupId}/`,
 }

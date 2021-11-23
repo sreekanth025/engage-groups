@@ -9,6 +9,7 @@ import  { Navigate } from 'react-router-dom';
 const App = () => {
 
     const [isAuth, setIsAuth] = useState(false);
+    localStorage.clear();
 
     return (
         <div>
