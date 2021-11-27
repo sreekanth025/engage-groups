@@ -6,7 +6,7 @@ import Group from "../components/Group";
 import CreateAssignment from "../components/CreateAssignment";
 import AssignmentAdminView from "../components/AssignmentAdminView";
 import SubmissionAdminView from "../components/SubmissionAdminView";
-import SubmissionStudentView from "../components/SubmissionStudentView";
+import AssignmentStudentView from "../components/AssignmentStudentView";
 
 
 const pages = [
@@ -57,8 +57,8 @@ const pages = [
     },
     {
         displayName: "",
-        pageLink: "/studentOpenSubmission",
-        component: SubmissionStudentView,
+        pageLink: "/studentOpenAssignment",
+        component: AssignmentStudentView,
     },
 ]
 

@@ -1,9 +1,11 @@
 import React from 'react'
+import AssignmentForm from './forms/AssignmentForm'
 
 function CreateAssignment() {
     return (
         <div>
-            <h1> New Assignemnt</h1>
+            <h1> New Assignment</h1>
+            <AssignmentForm />
         </div>
     )
 }

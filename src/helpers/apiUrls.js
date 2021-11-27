@@ -6,4 +6,8 @@ export const apiUrls = {
     createGroup: () => `${API_ROOT}/createGroup`,
     getUserGroups: () => `${API_ROOT}/getUserGroups`,
     getGroupAssignmnets: (groupId) => `${API_ROOT}/getGroupAssignments/${groupId}/`,
+    createAssignment: () => `${API_ROOT}/createAssignment`,
+    openAdminAssignmentView: (assignmentId) => `${API_ROOT}/adminOpenAssignment/${assignmentId}`,
+    openStudentAssignmentView: (assignmentId) => `${API_ROOT}/studentOpenAssignment/${assignmentId}`,
+    getGroupMembers: (groupId) => `${API_ROOT}/getGroupMembers/${groupId}`,
 }

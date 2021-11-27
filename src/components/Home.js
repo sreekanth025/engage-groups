@@ -5,7 +5,8 @@ import { Button } from 'reactstrap'
 import { apiUrls } from '../helpers/apiUrls'
 import { getHeaders } from '../helpers/requestConfig'
 import { useEffect, useState } from 'react'
-import GroupCard from './GroupCard'
+import GroupCard from './cards/GroupCard'
+import Loader from './Loader'
 
 function Home() {
 
@@ -37,7 +38,7 @@ function Home() {
             <h1>This is home page</h1>
             <Link to="/createGroup"><Button>Create New Group</Button></Link>
 
-            {loading ? <h1>Loader </h1> : 
+            {loading ? <Loader />: 
             groups.map((item, indx) => (
                 <GroupCard group={item} key={indx}/>
             ))}

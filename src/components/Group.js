@@ -7,6 +7,10 @@ import { getHeaders } from '../helpers/requestConfig';
 import { appConstants } from '../helpers/appConstants';
 import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
+import Loader from './Loader';
+import AssignmentCard from './cards/AssignmentCard';
+import GroupMembers from './GroupMembers';
+
 
 function Group() {
 
@@ -16,7 +20,7 @@ function Group() {
     let { groupId } = useParams();
     const group = JSON.parse(localStorage.getItem(appConstants.CURRENT_GROUP_INFO));
 
-    function CreateAssignment() {
+    function CreateAssignmentButton() {
         if(group.adminMail === group.userEmail) {
             return <Link to="/createAssignment"><Button>Create New Assignment</Button></Link>
         }
@@ -33,7 +37,10 @@ function Group() {
             headers: getHeaders()
         })
         .then((res) => {
-            console.log(res);
+            console.log(res.data);
+            setAssignments(res.data);
+            console.log('assignments: ')
+            console.log(assignments);
         })
         .catch((err) => {
             console.log(err);
@@ -46,7 +53,15 @@ function Group() {
     return (
         <div>
             <h1>Group</h1>
-            <CreateAssignment />
+            <CreateAssignmentButton />
+            <GroupMembers />
+
+            {
+                loading ? <Loader /> :
+                assignments.map((item, indx) => (
+                    <AssignmentCard assignment={item} key={indx}/>
+                ))
+            }
         </div>
     )
 }

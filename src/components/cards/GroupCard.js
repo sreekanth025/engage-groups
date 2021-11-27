@@ -1,8 +1,7 @@
 import React from 'react'
 import { CardBody, Card, CardGroup, CardTitle } from 'reactstrap';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
-import { appConstants } from '../helpers/appConstants';
+import { appConstants } from '../../helpers/appConstants';
 
 function GroupCard({group}) {
 

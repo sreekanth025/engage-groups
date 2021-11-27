@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Card, CardTitle } from 'reactstrap';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Button, Card, CardBody, CardTitle } from 'reactstrap';
 import pages from "./helpers/pages";
 import { useState } from 'react';
 import  { Navigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import  { Navigate } from 'react-router-dom';
 const App = () => {
 
     const [isAuth, setIsAuth] = useState(false);
-    localStorage.clear();
+    // localStorage.clear();
 
     return (
         <div>
