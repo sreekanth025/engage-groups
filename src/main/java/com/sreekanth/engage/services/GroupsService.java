@@ -49,7 +49,7 @@ public class GroupsService {
                     groupMember.getGroupId(),
                     groupName,
                     adminName,
-                    groupMember.getUserEmail(),
+                    adminMail,
                     userEmail
             );
             result.add(groupInfo);

@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface GroupMemberRepository extends MongoRepository<GroupMember, String> {
 
+    @Query("{userEmail : ?0}")
     List<GroupMember> findByUserEmail(String userEmail);
     List<GroupMember> findByGroupId(String groupId);
 
