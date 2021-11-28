@@ -29,7 +29,7 @@ public class AssignmentController {
         String groupId = (String) payload.get("groupId");
         String title = (String) payload.get("title");
         String instructions = (String) payload.get("instructions");
-        Date dueDate = (Date) payload.get("dueDate");
+        String dueDate = (String) payload.get("dueDate");
         List<String> fileLinks = (List<String>) payload.get("fileLinks");
         Integer points = Integer.valueOf((String) payload.get("points"));
 

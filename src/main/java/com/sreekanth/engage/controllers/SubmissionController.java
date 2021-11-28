@@ -36,8 +36,9 @@ public class SubmissionController {
         String userEmail = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         String submissionId = (String) payload.get("submissionId");
         String feedback = (String) payload.get("feedback");
+        Integer points = Integer.parseInt((String) payload.get("points"));
 
-        Submission submission = submissionService.submitFeedback(submissionId, feedback);
+        Submission submission = submissionService.submitFeedback(submissionId, feedback, points);
         mailingService.sendFeedbackMail(userEmail, submission);
         return submission.getId();
     }

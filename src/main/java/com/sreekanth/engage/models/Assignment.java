@@ -23,7 +23,7 @@ public class Assignment {
     private String groupId;
     private String title;
     private String instructions;
-    private Date dueDate;
+    private String dueDate;
     private List<String> fileLinks;
     private Integer points;
 }

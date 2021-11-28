@@ -32,10 +32,11 @@ public class SubmissionService {
         return submission.getId();
     }
 
-    public Submission submitFeedback(String submissionId, String feedback) {
+    public Submission submitFeedback(String submissionId, String feedback, Integer points) {
         Optional<Submission> OptionalSubmission = submissionRepository.findById(submissionId);
         Submission submission = OptionalSubmission.get();
         submission.setFeedback(feedback);
+        submission.setPointsReceived(points);
         submissionRepository.save(submission);
         return submission;
     }

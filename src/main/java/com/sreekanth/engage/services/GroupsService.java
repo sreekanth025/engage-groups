@@ -73,7 +73,8 @@ public class GroupsService {
     public String joinGroup(String userEmail, String groupId) {
         GroupMember groupMember = new GroupMember(groupId, userEmail, "waiting");
         groupMember = groupMemberRepository.save(groupMember);
-        mailingService.groupJoiningNotification();
+        String adminEmail = engageGroupUtil.getAdminMail(groupId);
+        mailingService.groupJoiningNotification(adminEmail, userEmail);
         return groupMember.getId();
     }
 

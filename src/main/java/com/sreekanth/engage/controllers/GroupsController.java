@@ -8,6 +8,7 @@ import com.sreekanth.engage.services.GroupsService;
 import com.sreekanth.engage.services.MailingService;
 import com.sreekanth.engage.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class GroupsController {
     private MailingService mailingService;
 
     @PostMapping("/createGroup")
-    public String createGroup(@RequestBody Map<String, Object> payload,
+    public ResponseEntity createGroup(@RequestBody Map<String, Object> payload,
                               @RequestHeader("Authorization") String auth) {
 
         String token = auth.substring(7);
@@ -40,7 +41,7 @@ public class GroupsController {
         System.out.println(emailList);
         System.out.println(groupId);
 
-        return "Group created, invitation mails under development";
+        return new ResponseEntity("Group created, invitation mails sent", HttpStatus.OK);
     }
 
     @GetMapping("/getUserGroups")

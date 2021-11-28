@@ -1,6 +1,7 @@
 package com.sreekanth.engage.config;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -33,6 +34,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         final String requestTokenHeader = request.getHeader("Authorization");
+
+//        System.out.println("request headers: ");
+//        Enumeration<String> headerNames = request.getHeaderNames();
+//
+//        if (headerNames != null) {
+//            while (headerNames.hasMoreElements()) {
+//                String head = headerNames.nextElement();
+//                System.out.println("Header: " + head + " -> " + request.getHeader(head));
+//            }
+//        }
+//        System.out.println("requestTokenHeader " + requestTokenHeader);
 
         String username = null;
         String jwtToken = null;
