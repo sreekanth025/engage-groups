@@ -14,8 +14,8 @@ function AssignmentCard({assignment}) {
         localStorage.setItem(appConstants.CURRENT_ASSIGNMENT_INFO, JSON.stringify(assignment));
         
         if(group.adminMail === group.userEmail){
-            // navigate('/adminOpenAssignment')
-            navigate('/studentOpenAssignment')
+            navigate('/adminOpenAssignment')
+            // navigate('/studentOpenAssignment')
         } else {
             navigate('/studentOpenAssignment')
         }

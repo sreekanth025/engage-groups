@@ -5,6 +5,9 @@ import { apiUrls } from '../helpers/apiUrls'
 import { getHeaders } from '../helpers/requestConfig'
 import Loader from './Loader'
 import { appConstants } from '../helpers/appConstants'
+import AssignmentSubmissionForm from './forms/AssignmentSubmissionForm'
+import AssignmentBody from './AssignmentBody'
+
 
 function AssignmentStudentView() {
 
@@ -33,23 +36,14 @@ function AssignmentStudentView() {
         })
     }
 
-    function AssignemntBody () {
-
-        return (
-            <div>
-                <h1>Assignemnt: {assignmentData.title}</h1>
-                <h4>Instructions: {assignmentData.instructions}</h4>
-                <h4>Points: {assignmentData.points}</h4>
-                <h4>Due Date: {assignmentData.dueDate}</h4>
-                <h4>Assignemnt Files: {assignmentData.fileLinks}</h4>
-            </div>
-        )
-    }
-
     return (
         <div>
             {
-                laoding ? <Loader /> : <AssignemntBody />
+                laoding ? <Loader /> : 
+                <div>
+                    <AssignmentBody assignmentData={assignmentData} />
+                    <AssignmentSubmissionForm />
+                </div>
             }
         </div>
     )

@@ -10,4 +10,7 @@ export const apiUrls = {
     openAdminAssignmentView: (assignmentId) => `${API_ROOT}/adminOpenAssignment/${assignmentId}`,
     openStudentAssignmentView: (assignmentId) => `${API_ROOT}/studentOpenAssignment/${assignmentId}`,
     getGroupMembers: (groupId) => `${API_ROOT}/getGroupMembers/${groupId}`,
+    submitAssignment: () => `${API_ROOT}/submitAssignment/`,
+    getSubmission: (submissionId) => `${API_ROOT}/getSubmission/${submissionId}/`,
+    submitFeedback: () => `${API_ROOT}/submitFeedback/`,
 }

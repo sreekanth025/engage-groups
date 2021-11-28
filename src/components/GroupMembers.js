@@ -6,6 +6,9 @@ import { apiUrls } from '../helpers/apiUrls';
 import { appConstants } from '../helpers/appConstants';
 import { getHeaders } from '../helpers/requestConfig';
 import Loader from './Loader';
+import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import MemberCard from './cards/MemberCard';
 
 
 function GroupMembers() {
@@ -25,6 +28,7 @@ function GroupMembers() {
         })
         .then((res) => {
             console.log(res);
+            setData(res.data)
         })
         .catch((err) => {
             console.log(err);
@@ -37,7 +41,12 @@ function GroupMembers() {
     return (
         <div>
             <h2>Group Members</h2>
-            {loading ? <Loader /> : <h3>MEMBERS UI</h3>}
+            <Link to={`/group/${group.groupId}`}><Button>Back to Group Page</Button></Link>
+            {loading ? <Loader /> : 
+                data.map((item, indx) => (
+                    <MemberCard groupMember={item} key={indx}/>
+                ))
+            }
         </div>
     );
 }

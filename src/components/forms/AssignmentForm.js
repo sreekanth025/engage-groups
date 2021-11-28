@@ -19,9 +19,10 @@ function AssignmentForm() {
 
     const group = JSON.parse(localStorage.getItem(appConstants.CURRENT_GROUP_INFO));
 
+    // Need to push the files to a cloud storage and get the link
     const getFileLinks = (files) => {
 
-        return ["file1@drive.com", "file2@drive.com"];
+        return ["https://bit.ly/3FRGlL1"];
     }
 
     const getResponse = async (body) => {

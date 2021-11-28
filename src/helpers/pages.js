@@ -7,6 +7,7 @@ import CreateAssignment from "../components/CreateAssignment";
 import AssignmentAdminView from "../components/AssignmentAdminView";
 import SubmissionAdminView from "../components/SubmissionAdminView";
 import AssignmentStudentView from "../components/AssignmentStudentView";
+import GroupMembers from "../components/GroupMembers";
 
 
 const pages = [
@@ -59,6 +60,11 @@ const pages = [
         displayName: "",
         pageLink: "/studentOpenAssignment",
         component: AssignmentStudentView,
+    },
+    {
+        displayName: "",
+        pageLink: "/groupMembers",
+        component: GroupMembers,
     },
 ]
 

@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom'
 import { Button } from 'reactstrap'
 import Loader from './Loader';
 import AssignmentCard from './cards/AssignmentCard';
-import GroupMembers from './GroupMembers';
-
 
 function Group() {
 
@@ -54,7 +52,7 @@ function Group() {
         <div>
             <h1>Group</h1>
             <CreateAssignmentButton />
-            <GroupMembers />
+            <Link to="/groupMembers"><Button>Group Members</Button></Link>
 
             {
                 loading ? <Loader /> :
