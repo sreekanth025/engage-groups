@@ -13,4 +13,5 @@ export const apiUrls = {
     submitAssignment: () => `${API_ROOT}/submitAssignment/`,
     getSubmission: (submissionId) => `${API_ROOT}/getSubmission/${submissionId}/`,
     submitFeedback: () => `${API_ROOT}/submitFeedback/`,
+    acceptMembership: () => `${API_ROOT}/acceptMembership/`,
 }
